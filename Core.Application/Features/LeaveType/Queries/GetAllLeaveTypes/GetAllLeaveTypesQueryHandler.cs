@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using Core.Application.Common.Exceptions;
 using Core.Application.Common.Interfaces;
 using Core.Application.Common.Models;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace Core.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
 
@@ -9,11 +11,15 @@ public class GetAllLeaveTypesQueryHandler : IRequestHandler<GetAllLeaveTypesQuer
 {
     private readonly ILeaveTypeRepository _leaveTypeRepository;
     private readonly IMapper _mapper;
+    private readonly ILogger<GetAllLeaveTypesQueryHandler> _logger;
 
-    public GetAllLeaveTypesQueryHandler(IMapper mapper, ILeaveTypeRepository leaveTypeRepository)
+    public GetAllLeaveTypesQueryHandler(IMapper mapper,
+        ILeaveTypeRepository leaveTypeRepository,
+        ILogger<GetAllLeaveTypesQueryHandler> logger)
     {
         _leaveTypeRepository = leaveTypeRepository;
         _mapper = mapper;
+        _logger = logger;
     }
 
     public async Task<GetAllLeaveTypesQueryResult> Handle(GetAllLeaveTypesQuery request, CancellationToken cancellationToken)
@@ -21,7 +27,8 @@ public class GetAllLeaveTypesQueryHandler : IRequestHandler<GetAllLeaveTypesQuer
         var leaveTypes = await _leaveTypeRepository.GetAsync();
         if (leaveTypes == null)
         {
-            throw new NotImplementedException();
+            _logger.LogError("Failed to retrieve leave types");
+            throw new NotFoundException(nameof(leaveTypes), request);
         }
 
         var result = _mapper.Map<List<LeaveTypeDto>>(leaveTypes);

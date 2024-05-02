@@ -1,11 +1,13 @@
-﻿namespace Core.Application.Common.Interfaces;
+﻿using Core.Domain.Common;
 
-public interface IGenericRepository<T> where T : class
+namespace Core.Application.Common.Interfaces;
+
+public interface IGenericRepository<T> where T : BaseEntity
 {
-    Task<List<T>> GetAsync();
+    Task<IReadOnlyCollection<T>> GetAsync();
     Task<T> GetByIdAsync(int id);
     Task<T> GetByUidAsync(Guid uid);
-    Task<T> CreateAsync(T entity);
-    Task<T> UpdateAsync(T entity);
-    Task<T> DeleteAsync(T entity);
+    Task CreateAsync(T entity);
+    Task UpdateAsync(T entity);
+    Task DeleteAsync(T entity);
 }

@@ -2,7 +2,7 @@
 
 namespace Core.Domain.Common;
 
-public abstract class BaseEntity
+public abstract class BaseEntity : IAffectedDateTimes
 {
     //[OpenApiExclude]
     [JsonIgnore]

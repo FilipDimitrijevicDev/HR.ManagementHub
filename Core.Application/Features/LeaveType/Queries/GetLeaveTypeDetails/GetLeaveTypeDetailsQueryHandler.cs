@@ -3,6 +3,7 @@ using Core.Application.Common.Exceptions;
 using Core.Application.Common.Interfaces;
 using Core.Application.Common.Models;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace Core.Application.Features.LeaveType.Queries.GetLeaveTypeDetails;
 
@@ -10,11 +11,15 @@ public class GetLeaveTypeDetailsQueryHandler : IRequestHandler<GetLeaveTypeDetai
 {
     private readonly IMapper _mapper;
     private readonly ILeaveRequestRepository _leaveRequestRepository;
+    private readonly ILogger<GetLeaveTypeDetailsQueryHandler> _logger;
 
-    public GetLeaveTypeDetailsQueryHandler(IMapper mapper, ILeaveRequestRepository leaveRequestRepository)
+    public GetLeaveTypeDetailsQueryHandler(IMapper mapper,
+        ILeaveRequestRepository leaveRequestRepository,
+        ILogger<GetLeaveTypeDetailsQueryHandler> logger)
     {
         _mapper = mapper;
         _leaveRequestRepository = leaveRequestRepository;
+        _logger = logger;
     }
 
     public async Task<GetLeaveTypeDetailsQueryResult> Handle(GetLeaveTypeDetailsQuery request, CancellationToken cancellationToken)
@@ -22,6 +27,7 @@ public class GetLeaveTypeDetailsQueryHandler : IRequestHandler<GetLeaveTypeDetai
         var leaveType = await _leaveRequestRepository.GetByUidAsync(request.Uid);
         if (leaveType == null)
         {
+            _logger.LogError("Failed to retrieve leave type: {0}", request.Uid);
             throw new NotFoundException(nameof(LeaveType), request.Uid);
         }
 
