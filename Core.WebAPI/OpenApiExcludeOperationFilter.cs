@@ -1,5 +1,11 @@
-﻿//namespace Core.WebAPI;
+//using System.Reflection;
+//using Microsoft.AspNetCore.Mvc;
+//using Microsoft.OpenApi.Models;
+//using Swashbuckle.AspNetCore.SwaggerGen;
 
+//namespace Core.WebAPI;
+
+////https://dejanstojanovic.net/aspnet/2019/october/ignoring-properties-from-controller-action-model-in-swagger-using-jsonignore/
 //public class OpenApiExcludeOperationFilter : IOperationFilter
 //{
 //    public void Apply(OpenApiOperation operation, OperationFilterContext context)

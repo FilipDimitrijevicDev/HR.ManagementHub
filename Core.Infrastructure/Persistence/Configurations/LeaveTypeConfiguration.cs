@@ -15,8 +15,7 @@ public class LeaveTypeConfiguration : IEntityTypeConfiguration<LeaveType>
               Uid = new Guid(),
               Name = "Vacation",
               DefaultDays = 20,
-              CreatedDate = DateTime.Now,
-              UpdatedDate = DateTime.Now
+              CreatedDate = DateTime.Now
           });
 
         builder.Property(x => x.Name)

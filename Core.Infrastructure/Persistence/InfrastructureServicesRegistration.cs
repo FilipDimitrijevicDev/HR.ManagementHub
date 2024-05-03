@@ -12,9 +12,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Core.Infrastructure.Persistence;
 
-public static class PersistenceServiceRegistration
+public static class InfrastructureServicesRegistration
 {
-    public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<DatabaseContext.DatabaseContext>(options => {
             options.UseSqlServer(configuration.GetConnectionString("HrDatabaseConnectionString"));
