@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Core.Application.Common.Exceptions;
 using Core.Application.Common.Interfaces;
-using Core.Application.Common.Models;
+using Core.Application.Common.Models.DTOs;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
@@ -10,11 +10,11 @@ namespace Core.Application.Features.LeaveType.Queries.GetLeaveTypeDetails;
 public class GetLeaveTypeDetailsQueryHandler : IRequestHandler<GetLeaveTypeDetailsQuery, GetLeaveTypeDetailsQueryResult>
 {
     private readonly IMapper _mapper;
-    private readonly ILeaveRequestRepository _leaveRequestRepository;
+    private readonly ILeaveTypeRepository _leaveRequestRepository;
     private readonly ILogger<GetLeaveTypeDetailsQueryHandler> _logger;
 
     public GetLeaveTypeDetailsQueryHandler(IMapper mapper,
-        ILeaveRequestRepository leaveRequestRepository,
+        ILeaveTypeRepository leaveRequestRepository,
         ILogger<GetLeaveTypeDetailsQueryHandler> logger)
     {
         _mapper = mapper;
@@ -34,6 +34,7 @@ public class GetLeaveTypeDetailsQueryHandler : IRequestHandler<GetLeaveTypeDetai
         var result = _mapper.Map<LeaveTypeDetailsDto>(leaveType);
         if (result == null)
         {
+            _logger.LogError("Failed to Mapping Leave Type entity to LeaveTypeDTO. LeaveType: {0}", leaveType.Name);
             throw new NotImplementedException();
         }
 

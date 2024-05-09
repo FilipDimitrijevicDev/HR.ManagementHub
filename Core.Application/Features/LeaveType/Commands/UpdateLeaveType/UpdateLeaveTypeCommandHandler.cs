@@ -1,29 +1,36 @@
 ﻿using AutoMapper;
+using Core.Application.Common.Exceptions;
 using Core.Application.Common.Interfaces;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace Core.Application.Features.LeaveType.Commands.UpdateLeaveType;
 
 public class UpdateLeaveTypeCommandHandler : IRequestHandler<UpdateLeaveTypeCommand, UpdateLeaveTypeCommandResult>
 {
-    private readonly IMapper _mapper;
+    private readonly ILogger<UpdateLeaveTypeCommandHandler> _logger;
     private readonly ILeaveTypeRepository _leaveTypeRepository;
 
-    public UpdateLeaveTypeCommandHandler(IMapper mapper, ILeaveTypeRepository leaveTypeRepository)
+    public UpdateLeaveTypeCommandHandler(ILogger<UpdateLeaveTypeCommandHandler> logger, ILeaveTypeRepository leaveTypeRepository)
     {
-        _mapper = mapper;
+        _logger = logger;
         _leaveTypeRepository = leaveTypeRepository;
     }
 
     public async Task<UpdateLeaveTypeCommandResult> Handle(UpdateLeaveTypeCommand request, CancellationToken cancellationToken)
     {
-        var leaveTypeForUpdate = _mapper.Map<Domain.LeaveType>(request);
-        if (leaveTypeForUpdate == null)
+        var leaveTypeEntity = await _leaveTypeRepository.GetByUidAsync(request.Uid);
+        if (leaveTypeEntity == null)
         {
-            throw new NotImplementedException();
+            _logger.LogError($"Leave Type with UID: {0} doesn't exist", request.Uid);
+
+            throw new NotFoundException(nameof(LeaveType), request.Uid);
         }
 
-        await _leaveTypeRepository.UpdateAsync(leaveTypeForUpdate);
+        leaveTypeEntity.Name = request.Name;
+        leaveTypeEntity.DefaultDays = request.DefaultDays;
+
+        await _leaveTypeRepository.UpdateAsync(leaveTypeEntity);
 
         return new UpdateLeaveTypeCommandResult();
     }

@@ -1,10 +1,8 @@
 ﻿namespace Core.Application.Common.Models;
 
-public class LeaveTypeDetailsDto
+public class LeaveType
 {
     public Guid Uid { get; set; }
     public string Name { get; set; } = string.Empty;
     public int DefaultDays { get; set; }
-    public DateTime? CreatedDate { get; set; }
-    public DateTime? UpdatedDate { get; set; }
 }

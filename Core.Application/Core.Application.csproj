@@ -16,9 +16,4 @@
     <ProjectReference Include="..\Core.Domain\Core.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\LeaveDistribution\" />
-    <Folder Include="Features\LeaveRequest\" />
-  </ItemGroup>
-
 </Project>

@@ -15,6 +15,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     public async Task<IReadOnlyCollection<T>> GetAsync()
     {
         return await _dbContext.Set<T>()
+            .Where(x => x.DeletedDate == null)
             .AsNoTracking()
             .ToListAsync();
     }
@@ -22,15 +23,17 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     public async Task<T> GetByIdAsync(int id)
     {
         return await _dbContext.Set<T>()
+            .Where(x => x.DeletedDate == null)
             .AsNoTracking()
-            .SingleOrDefaultAsync(x => x.Id == id);
+            .SingleAsync(x => x.Id == id);
     }
 
     public async Task<T> GetByUidAsync(Guid uid)
     {
         return await _dbContext.Set<T>()
+            .Where(x => x.DeletedDate == null)
             .AsNoTracking()
-            .SingleOrDefaultAsync(x => x.Uid == uid);
+            .SingleAsync(x => x.Uid == uid);
     }
 
     public async Task CreateAsync(T entity)
@@ -48,6 +51,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     public async Task DeleteAsync(T entity)
     {
         _dbContext.Remove(entity);
+
         await _dbContext.SaveChangesAsync();
     }
 

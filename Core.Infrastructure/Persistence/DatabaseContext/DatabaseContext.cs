@@ -8,7 +8,7 @@ public class DatabaseContext : DbContext
 {
     public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
     {
-        
+
     }
 
     public DbSet<LeaveType> LeaveTypes { get; set; }
@@ -26,17 +26,22 @@ public class DatabaseContext : DbContext
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        foreach (var entry in base.ChangeTracker.Entries<BaseEntity>().Where(x => x.State == EntityState.Added || x.State == EntityState.Modified))
+        foreach (var entry in base.ChangeTracker.Entries<BaseEntity>())
         {
-            entry.Entity.UpdatedDate = DateTime.UtcNow;
-
-            if (entry.State == EntityState.Added)
+            switch (entry.State)
             {
-                entry.Entity.CreatedDate = DateTime.UtcNow;
+                case EntityState.Added:
+                    entry.Entity.CreatedDate = DateTime.UtcNow;
+                    break;
+                case EntityState.Modified:
+                    entry.Entity.UpdatedDate = DateTime.UtcNow;
+                    break;
+                case EntityState.Deleted:
+                    SoftDelete();
+                    entry.State = EntityState.Modified;
+                    break;
             }
-        }
-
-        SoftDelete();
+        } 
 
         return base.SaveChangesAsync(cancellationToken);
     }

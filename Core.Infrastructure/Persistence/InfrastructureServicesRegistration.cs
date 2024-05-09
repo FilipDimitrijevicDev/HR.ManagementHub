@@ -2,7 +2,6 @@
 using Core.Application.Common.Interfaces;
 using Core.Application.Common.Logging;
 using Core.Application.Common.Models;
-using Core.Domain;
 using Core.Infrastructure.Persistence.EmailService;
 using Core.Infrastructure.Persistence.Logging;
 using Core.Infrastructure.Persistence.Repositories;

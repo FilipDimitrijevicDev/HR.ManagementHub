@@ -6,23 +6,22 @@ namespace Core.Application.Features.LeaveType.Commands.CreateLeaveType;
 
 public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeCommand, CreateLeaveTypeCommandResult>
 {
-    private readonly IMapper _mapper;
     private readonly ILeaveTypeRepository _leaveTypeRepository;
 
-    public CreateLeaveTypeCommandHandler(IMapper mapper, ILeaveTypeRepository leaveTypeRepository)
+    public CreateLeaveTypeCommandHandler(ILeaveTypeRepository leaveTypeRepository)
     {
-        _mapper = mapper;
         _leaveTypeRepository = leaveTypeRepository;
     }
     public async Task<CreateLeaveTypeCommandResult> Handle(CreateLeaveTypeCommand request, CancellationToken cancellationToken)
     {
-        var leaveTypeForAdding = _mapper.Map<Domain.LeaveType>(request);
-        if (leaveTypeForAdding == null)
+        var leaveType = new Domain.LeaveType
         {
-            throw new NotImplementedException();
-        }
+            Uid = Guid.NewGuid(),
+            Name = request.Name,
+            DefaultDays = request.DefaultDays
+        };
 
-        await _leaveTypeRepository.CreateAsync(leaveTypeForAdding);
+        await _leaveTypeRepository.CreateAsync(leaveType);
 
         return new CreateLeaveTypeCommandResult();
     }
