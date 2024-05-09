@@ -6,6 +6,6 @@ public class UpdateLeaveDistributionCommand : IRequest<UpdateLeaveDistributionCo
 {
     public Guid Uid { get; set; }
     public int NumberOfDays { get; set; }
-    public int LeaveTypeUid { get; set; }
+    public int LeaveTypeId { get; set; }
     public int Period { get; set; }
 }

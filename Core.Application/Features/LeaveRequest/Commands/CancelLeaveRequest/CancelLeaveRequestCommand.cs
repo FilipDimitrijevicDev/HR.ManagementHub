@@ -1,5 +1,8 @@
-﻿namespace Core.Application.Features.LeaveRequest.Commands.CancelLeaveRequest;
+﻿using MediatR;
 
-public class CancelLeaveRequestCommand 
+namespace Core.Application.Features.LeaveRequest.Commands.CancelLeaveRequest;
+
+public class CancelLeaveRequestCommand : IRequest<CancelLeaveRequestCommandResult>
 {
+    public Guid Uid { get; set; }
 }

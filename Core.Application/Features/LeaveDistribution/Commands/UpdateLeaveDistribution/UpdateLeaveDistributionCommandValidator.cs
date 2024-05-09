@@ -27,13 +27,13 @@ public class UpdateLeaveDistributionCommandValidator : AbstractValidator<UpdateL
         RuleFor(p => p.Uid)
             .NotNull()
             .NotEmpty()
-            .MustAsync(LeaveAllocationMustExist)
+            .MustAsync(LeaveDistributionMustExist)
             .WithMessage("{PropertyName} must be present");
     }
-    private async Task<bool> LeaveAllocationMustExist(Guid uid, CancellationToken arg2)
+    private async Task<bool> LeaveDistributionMustExist(Guid uid, CancellationToken arg2)
     {
-        var leaveAllocation = await _leaveDistributionRepository.GetByUidAsync(uid);
-        return leaveAllocation != null;
+        var leaveDistribution = await _leaveDistributionRepository.GetByUidAsync(uid);
+        return leaveDistribution != null;
     }
 
     private async Task<bool> LeaveTypeMustExist(Guid uid, CancellationToken arg2)

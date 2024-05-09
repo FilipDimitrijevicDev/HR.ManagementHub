@@ -1,5 +1,8 @@
-﻿namespace Core.Application.Features.LeaveRequest.Commands.DeleteLeaveRequest;
+﻿using MediatR;
 
-public class DeleteLeaveRequestCommand
+namespace Core.Application.Features.LeaveRequest.Commands.DeleteLeaveRequest;
+
+public class DeleteLeaveRequestCommand : IRequest<DeleteLeaveRequestCommandResult>
 {
+    public Guid Uid { get; set; }
 }

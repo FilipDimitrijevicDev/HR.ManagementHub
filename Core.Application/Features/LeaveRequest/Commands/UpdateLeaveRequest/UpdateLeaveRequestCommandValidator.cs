@@ -1,5 +1,13 @@
-﻿namespace Core.Application.Features.LeaveRequest.Commands.UpdateLeaveRequest;
+﻿using FluentValidation;
 
-public class UpdateLeaveRequestCommandValidator
+namespace Core.Application.Features.LeaveRequest.Commands.UpdateLeaveRequest;
+
+public class UpdateLeaveRequestCommandValidator : AbstractValidator<UpdateLeaveRequestCommand>
 {
+    public UpdateLeaveRequestCommandValidator()
+    {
+        RuleFor(x => x.Uid)
+        .NotNull()
+        .NotEmpty();
+    }
 }

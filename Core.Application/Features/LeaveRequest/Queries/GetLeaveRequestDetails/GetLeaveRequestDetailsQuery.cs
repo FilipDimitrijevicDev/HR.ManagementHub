@@ -1,5 +1,8 @@
-﻿namespace Core.Application.Features.LeaveRequest.Queries.GetLeaveRequestDetails;
+﻿using MediatR;
 
-public class GetLeaveRequestDetailsQuery
+namespace Core.Application.Features.LeaveRequest.Queries.GetLeaveRequestDetails;
+
+public class GetLeaveRequestDetailsQuery : IRequest<GetLeaveRequestDetailsQueryResult>
 {
+    public Guid Uid { get; set; }
 }
