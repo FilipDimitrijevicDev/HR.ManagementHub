@@ -1,5 +1,4 @@
-﻿using Core.Application.Common.Logging;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 
 namespace Core.Infrastructure.Persistence.Logging;
 
@@ -12,11 +11,16 @@ public class LoggerAdapter<T> : Application.Common.Logging.ILogger<T>
     }
     public void LogInformation(string message, params object[] args)
     {
-        throw new NotImplementedException();
+        _logger.LogInformation(message, args);
     }
 
     public void LogWarning(string message, params object[] args)
     {
-        throw new NotImplementedException();
+        _logger?.LogWarning(message, args);
+    }
+
+    public void LogError(string message, params object[] args)
+    {
+        _logger?.LogError(message, args);
     }
 }

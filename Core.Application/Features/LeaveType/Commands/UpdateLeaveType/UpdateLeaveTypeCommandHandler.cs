@@ -1,8 +1,7 @@
-﻿using AutoMapper;
-using Core.Application.Common.Exceptions;
+﻿using Core.Application.Common.Exceptions;
 using Core.Application.Common.Interfaces;
+using Core.Application.Common.Logging;
 using MediatR;
-using Microsoft.Extensions.Logging;
 
 namespace Core.Application.Features.LeaveType.Commands.UpdateLeaveType;
 
