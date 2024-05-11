@@ -31,11 +31,11 @@ public class GetLeaveTypesQueryHandlerTests
     [Fact]
     public async Task GetLeaveTypesTest()
     {
-        //var handler = new GetAllLeaveTypesQueryHandler(_mapper, _mockRepo.Object, _mockLogger.Object);
+        var handler = new GetAllLeaveTypesQueryHandler(_mapper, _mockRepo.Object, _mockLogger.Object);
 
-        //var results = await handler.Handle(new GetAllLeaveTypesQuery(), CancellationToken.None);
+        var results = await handler.Handle(new GetAllLeaveTypesQuery(), CancellationToken.None);
 
-        //var result = results.ShouldBeOfType<GetAllLeaveTypesQueryResult>();
-        //result.LeaveTypeDto.Count.ShouldBe(3);
+        var result = results.ShouldBeOfType<GetAllLeaveTypesQueryResult>();
+        result.LeaveTypeDto.Count.ShouldBe(3);
     }
 }
