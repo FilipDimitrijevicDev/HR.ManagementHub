@@ -1,7 +1,6 @@
 {
   "name": "HR.ManagementHub.BlazorUI",
   "short_name": "HR.ManagementHub.BlazorUI",
-  "id": "./",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",

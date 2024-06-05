@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Infrastructure", "Core
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.WebAPI", "Core.WebAPI\Core.WebAPI.csproj", "{FE1B4449-DFED-4184-AD00-2AC02121711D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.ManagementHub.BlazorUI", "HR.ManagementHub.BlazorUI\HR.ManagementHub.BlazorUI.csproj", "{A055B5B8-C282-4B0F-AD34-FD224B879C5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR.ManagementHub.BlazorUI", "HR.ManagementHub.BlazorUI\HR.ManagementHub.BlazorUI.csproj", "{A055B5B8-C282-4B0F-AD34-FD224B879C5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
