@@ -2,9 +2,9 @@
 
 namespace Core.Application.Common.Identity;
 
-public class IUserService
+public interface IUserService
 {
-    //Task<List<Employee>> GetEmployees();
-    //Task<Employee> GetEmployee(string userId);
+    Task<List<Employee>> GetEmployees();
+    Task<Employee> GetEmployee(string userId);
     public string UserId { get; }
 }

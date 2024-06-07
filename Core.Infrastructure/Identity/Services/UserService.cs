@@ -12,6 +12,10 @@ public class UserService : IUserService
     {
         _userManager = userManager;
     }
+
+    public string UserId => throw new NotImplementedException();
+
+    //public string UserId { get => _contextAccessor.HttpContext?.User?.FindFirstValue("uid"); }
     public async Task<Employee> GetEmployee(string userId)
     {
         var employee = await _userManager.FindByIdAsync(userId);
