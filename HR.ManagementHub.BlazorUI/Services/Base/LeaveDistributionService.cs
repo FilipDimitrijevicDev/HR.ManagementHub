@@ -1,10 +1,11 @@
-﻿using HR.ManagementHub.BlazorUI.Common.Interfaces;
+﻿using Blazored.LocalStorage;
+using HR.ManagementHub.BlazorUI.Common.Interfaces;
 
 namespace HR.ManagementHub.BlazorUI.Services.Base;
 
 public class LeaveDistributionService : BaseHttpService, ILeaveDistributionService
 {
-    public LeaveDistributionService(IClient client) : base(client)
+    public LeaveDistributionService(IClient client, ILocalStorageService localStorageService) : base(client, localStorageService)
     {
     }
 

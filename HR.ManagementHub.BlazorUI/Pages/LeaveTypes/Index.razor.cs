@@ -1,62 +1,61 @@
 ﻿using HR.ManagementHub.BlazorUI.Common.Interfaces;
 using HR.ManagementHub.BlazorUI.Models.LeaveTypes;
 using Microsoft.AspNetCore.Components;
-using System;
 
-namespace HR.ManagementHub.BlazorUI.Pages.LeaveTypes
+namespace HR.ManagementHub.BlazorUI.Pages.LeaveTypes;
+
+public partial class Index
 {
-    public partial class Index
+    [Inject]
+    public NavigationManager NavigationManager { get; set; }
+
+    [Inject]
+    public ILeaveTypeService LeaveTypeService { get; set; }
+    [Inject]
+    public ILeaveDistributionService LeaveDistributionService { get; set; }
+    //[Inject]
+    //IToastService toastService { get; set; }
+
+    public List<LeaveTypeVM> LeaveTypes { get; private set; }
+    public string Message { get; set; } = string.Empty;
+
+    protected void CreateLeaveType()
     {
-        [Inject]
-        public NavigationManager NavigationManager { get; set; }
+        NavigationManager.NavigateTo("/leavetypes/create/");
+    }
 
-        [Inject]
-        public ILeaveTypeService LeaveTypeService { get; set; }
-        [Inject]
-        public ILeaveDistributionService LeaveDistributionService { get; set; }
-        //[Inject]
-        //IToastService toastService { get; set; }
+    protected void AssignLeaveType(Guid uid)
+    {
+        LeaveDistributionService.CreateLeaveDistribution(uid);
+    }
 
-        public List<LeaveTypeVM> LeaveTypes { get; private set; }
-        public string Message { get; set; } = string.Empty;
+    protected void EditLeaveType(Guid uid)
+    {
+        NavigationManager.NavigateTo($"/leavetypes/edit/{uid}");
+    }
 
-        protected void CreateLeaveType()
+    protected void DetailsLeaveType(Guid uid)
+    {
+        NavigationManager.NavigateTo($"/leavetypes/details/{uid}");
+    }
+
+    protected async Task DeleteLeaveType(Guid uid)
+    {
+        var response = await LeaveTypeService.DeleteLeaveType(uid);
+        if (response.Success)
         {
-            NavigationManager.NavigateTo("/leavetypes/create/");
+            //toastService.ShowSuccess("Leave Type deleted Successfully");
+            await OnInitializedAsync();
         }
-
-        protected void AssignLeaveType(Guid uid)
+        else
         {
-            LeaveDistributionService.CreateLeaveDistribution(uid);
+            Message = response.Message;
         }
+    }
 
-        protected void EditLeaveType(Guid uid)
-        {
-            NavigationManager.NavigateTo($"/leavetypes/edit/{uid}");
-        }
-
-        protected void DetailsLeaveType(Guid uid)
-        {
-            NavigationManager.NavigateTo($"/leavetypes/details/{uid}");
-        }
-
-        protected async Task DeleteLeaveType(Guid uid)
-        {
-            var response = await LeaveTypeService.DeleteLeaveType(uid);
-            if (response.Success)
-            {
-                //toastService.ShowSuccess("Leave Type deleted Successfully");
-                await OnInitializedAsync();
-            }
-            else
-            {
-                Message = response.Message;
-            }
-        }
-
-        protected override async Task OnInitializedAsync()
-        {
-            LeaveTypes = await LeaveTypeService.GetLeaveTypes();
-        }
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await LeaveTypeService.GetLeaveTypes();
+        LeaveTypes = result;
     }
 }

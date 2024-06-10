@@ -1,5 +1,8 @@
+using Blazored.LocalStorage;
 using HR.ManagementHub.BlazorUI.Common.Interfaces;
+using HR.ManagementHub.BlazorUI.Providers;
 using HR.ManagementHub.BlazorUI.Services.Base;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using System.Reflection;
@@ -18,9 +21,13 @@ public class Program
 
         builder.Services.AddHttpClient<IClient, Client>(client => client.BaseAddress = new Uri("https://localhost:7276"));
 
+        builder.Services.AddBlazoredLocalStorage();
+        builder.Services.AddAuthorizationCore();
+        builder.Services.AddScoped<AuthenticationStateProvider, ApiAuthenticationStateProvider>();
         builder.Services.AddScoped<ILeaveTypeService, LeaveTypeService>();
         builder.Services.AddScoped<ILeaveRequestService, LeaveRequestService>();
         builder.Services.AddScoped<ILeaveDistributionService, LeaveDistributionService>();
+        builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
         builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
