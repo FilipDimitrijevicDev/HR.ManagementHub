@@ -99,7 +99,7 @@ namespace Core.Infrastructure.Migrations.IdentityDb
                         {
                             Id = "42df1250-85ef-4683-9046-6f2e5405ee3a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6ca9245c-5967-4d24-a95f-754c51ac95e6",
+                            ConcurrencyStamp = "755765f3-4525-4fdf-9cd2-4282c2e86dde",
                             Email = "admin@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -107,9 +107,9 @@ namespace Core.Infrastructure.Migrations.IdentityDb
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMbvEPD+BhrVM6CYhc0lEHDD/meW7i/gxUb8aFrsg0ZYgLkyPXUoYfy6FyyjoKb/tw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEA/5KBhwcWNLxSRjEnG7Z4Xw0IZM6KOFV5hAcKayoWjK95wfI8CbiwekPvZw8MRTAA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f3a4a6b1-3f70-42b2-81af-723d864aa8f2",
+                            SecurityStamp = "ecee618e-5234-4977-a884-0f804f523aea",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         },
@@ -117,7 +117,7 @@ namespace Core.Infrastructure.Migrations.IdentityDb
                         {
                             Id = "2499bc5a-0f33-4f67-b521-5829679ee7ff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c4998996-9783-467c-98f8-3a582c72435e",
+                            ConcurrencyStamp = "70936683-7c99-43ff-b182-ed4f6d5376af",
                             Email = "user@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -125,9 +125,9 @@ namespace Core.Infrastructure.Migrations.IdentityDb
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@LOCALHOST.COM",
                             NormalizedUserName = "USER@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAENAf6dwLNqYJWDnxEKL8iK8T1eFGnrOkYQvWHHefETV4rj+L5kbt5pGdQ98ruiiuOg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMw3B5jgIPq19u8/tYLiJqa5NJC/AVP4uKFDdLYfzfOlnUOYbaOAQ6qB2BuMu3eZ2A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3caeed72-54ec-4e9d-b29b-35fca64323bb",
+                            SecurityStamp = "10f5af99-e9f7-471b-9f9b-cb70f2eb8f2b",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com"
                         },
@@ -135,7 +135,7 @@ namespace Core.Infrastructure.Migrations.IdentityDb
                         {
                             Id = "306627f3-c902-4d48-a6f3-d83db48df2c6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d60c9ba6-e177-4fe6-9af7-7b4d244ba3d1",
+                            ConcurrencyStamp = "066f92e1-77fa-4ff0-a27c-1181d0f76615",
                             Email = "hr@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "Hr",
@@ -143,9 +143,9 @@ namespace Core.Infrastructure.Migrations.IdentityDb
                             LockoutEnabled = false,
                             NormalizedEmail = "HR@LOCALHOST.COM",
                             NormalizedUserName = "HR@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEM0XIAuOxnppQPElTA/ZRlVPYKyBkZ5bKZLvQiRo1UhZ5ONqCDPV5K0yMgiMfm3SNw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECPmqyPBVmAXYxnS4x7euqzemu3ZwXG5SIHNMyRI7ZS3vhdoK0IO6l/COSN8t2AvjQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2fa54459-ed6f-4c8d-8bb2-21fccbdee93b",
+                            SecurityStamp = "c92756d9-cc49-4c6b-8542-36e356181b70",
                             TwoFactorEnabled = false,
                             UserName = "hr@localhost.com"
                         });

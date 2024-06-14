@@ -16,15 +16,15 @@ public class LeaveDistributionRepository : GenericRepository<LeaveDistribution>,
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task<bool> DistributionExists(Guid uid, Guid leaveTypeUid, int period)
+    public async Task<bool> DistributionExists(string employeeUid, Guid leaveTypeUid, int period)
     {
-        return await _dbContext.LeaveDistributions.AnyAsync(x => x.Uid == uid && x.LeaveType.Uid == leaveTypeUid && x.Period == period);
+        return await _dbContext.LeaveDistributions.AnyAsync(x => x.LeaveTypeUid == leaveTypeUid && x.Period == period && x.EmployeeUid == employeeUid);      
     }
 
     public async Task<List<LeaveDistribution>> GetLeaveDistributions(Guid userUid)
     {
         var result = await _dbContext.LeaveDistributions
-            .Where(x => x.EmployeeUid == userUid)
+            .Where(x => x.EmployeeUid == userUid.ToString())
             .Include(x => x.LeaveType)
             .ToListAsync();
 
@@ -51,6 +51,6 @@ public class LeaveDistributionRepository : GenericRepository<LeaveDistribution>,
 
     public async Task<LeaveDistribution> GetUserDistributions(Guid userUid, Guid leaveTypeUid)
     {
-        return await _dbContext.LeaveDistributions.SingleOrDefaultAsync(x => x.EmployeeUid == userUid && x.Uid == leaveTypeUid);  
+        return await _dbContext.LeaveDistributions.SingleOrDefaultAsync(x => x.EmployeeUid == userUid.ToString() && x.Uid == leaveTypeUid);
     }
 }

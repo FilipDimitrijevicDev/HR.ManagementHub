@@ -36,9 +36,10 @@ namespace Core.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NumberOfDays = table.Column<int>(type: "int", nullable: false),
+                    LeaveTypeUid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LeaveTypeId = table.Column<int>(type: "int", nullable: false),
                     Period = table.Column<int>(type: "int", nullable: false),
-                    EmployeeUid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EmployeeUid = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Uid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -88,7 +89,7 @@ namespace Core.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "LeaveTypes",
                 columns: new[] { "Id", "CreatedDate", "DefaultDays", "DeletedDate", "Name", "Uid", "UpdatedDate" },
-                values: new object[] { 1, new DateTime(2024, 6, 14, 15, 30, 7, 623, DateTimeKind.Local).AddTicks(9763), 20, null, "Vacation", new Guid("c810b09c-dc40-435e-aed3-0df86003297c"), null });
+                values: new object[] { 1, new DateTime(2024, 6, 14, 22, 53, 18, 887, DateTimeKind.Local).AddTicks(9709), 21, null, "Vacation", new Guid("85655d4e-71c1-4282-9474-6b381e603b3f"), null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_LeaveDistributions_LeaveTypeId",

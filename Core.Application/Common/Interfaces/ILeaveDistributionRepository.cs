@@ -7,7 +7,7 @@ public interface ILeaveDistributionRepository : IGenericRepository<LeaveDistribu
     Task<LeaveDistribution> GetLeaveDistributionWithDetails(Guid uid);
     Task<List<LeaveDistribution>> GetLeaveDistributionWithDetails();
     Task<List<LeaveDistribution>> GetLeaveDistributions(Guid userUid);
-    Task<bool> DistributionExists(Guid uid, Guid leaveTypeUid, int period);
+    Task<bool> DistributionExists(string employeeUid, Guid leaveTypeUid, int period);
     Task AddDistribution(List<LeaveDistribution> leaveDistributions);
     Task<LeaveDistribution> GetUserDistributions(Guid userUid, Guid leaveTypeUid);
 }

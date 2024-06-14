@@ -25,7 +25,7 @@ public class UpdateLeaveDistributionCommandHandler : IRequestHandler<UpdateLeave
         }
 
         leaveDistributionEntity.NumberOfDays = request.NumberOfDays;
-        leaveDistributionEntity.LeaveTypeId = request.LeaveTypeId;
+        leaveDistributionEntity.LeaveTypeUid = request.LeaveTypeUId;
         leaveDistributionEntity.Period = request.Period;
 
         await _leaveDistributionRepository.UpdateAsync(leaveDistributionEntity);

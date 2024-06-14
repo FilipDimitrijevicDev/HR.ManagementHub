@@ -36,11 +36,15 @@ namespace Core.Infrastructure.Migrations
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("EmployeeUid")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("EmployeeUid")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("LeaveTypeId")
                         .HasColumnType("int");
+
+                    b.Property<Guid>("LeaveTypeUid")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("NumberOfDays")
                         .HasColumnType("int");
@@ -149,10 +153,10 @@ namespace Core.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 6, 14, 15, 30, 7, 623, DateTimeKind.Local).AddTicks(9763),
-                            DefaultDays = 20,
+                            CreatedDate = new DateTime(2024, 6, 14, 22, 53, 18, 887, DateTimeKind.Local).AddTicks(9709),
+                            DefaultDays = 21,
                             Name = "Vacation",
-                            Uid = new Guid("c810b09c-dc40-435e-aed3-0df86003297c")
+                            Uid = new Guid("85655d4e-71c1-4282-9474-6b381e603b3f")
                         });
                 });
 

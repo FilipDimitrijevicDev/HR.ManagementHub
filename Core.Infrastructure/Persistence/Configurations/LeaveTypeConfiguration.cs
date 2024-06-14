@@ -14,7 +14,7 @@
 //              Id = 1,
 //              Uid = Guid.NewGuid(),
 //              Name = "Vacation",
-//              DefaultDays = 20,
+//              DefaultDays = 21,
 //              CreatedDate = DateTime.Now
 //          });
 
@@ -25,7 +25,7 @@
 //        builder.Property(x => x.DefaultDays)
 //            .IsRequired();
 
-//        builder.Property(x => x.Uid) 
-//            .IsRequired();            
+//        builder.Property(x => x.Uid)
+//            .IsRequired();
 //    }
 //}
