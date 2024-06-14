@@ -1,5 +1,7 @@
 ﻿using Core.Domain;
 using Core.Domain.Common;
+using Core.Infrastructure.Identity.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Core.Infrastructure.Persistence.DatabaseContext;
@@ -19,6 +21,13 @@ public class DatabaseContext : DbContext
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Ignore<IdentityUserLogin<string>>();
+        modelBuilder.Ignore<IdentityUserRole<string>>();
+        modelBuilder.Ignore<IdentityUserClaim<string>>();
+        modelBuilder.Ignore<IdentityUserToken<string>>();
+        modelBuilder.Ignore<IdentityUser<string>>();
+        modelBuilder.Ignore<ApplicationUser>();
     }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
