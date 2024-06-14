@@ -60,10 +60,8 @@ public class ApiAuthenticationStateProvider : AuthenticationStateProvider
     {
         var savedToken = await _localStorage.GetItemAsync<string>("token");
         var tokenContent = jwtSecurityTokenHandler.ReadJwtToken(savedToken);
-        var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Name, tokenContent.Subject)
-        };
+        var claims = tokenContent.Claims.ToList();
+        claims.Add(new Claim(ClaimTypes.Name, tokenContent.Subject));
         return claims;
     }
 }

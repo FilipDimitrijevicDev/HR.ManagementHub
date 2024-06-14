@@ -23,6 +23,7 @@ public class Program
 
         builder.Services.AddBlazoredLocalStorage();
         builder.Services.AddAuthorizationCore();
+        builder.Services.AddScoped<ApiAuthenticationStateProvider>();
         builder.Services.AddScoped<AuthenticationStateProvider, ApiAuthenticationStateProvider>();
         builder.Services.AddScoped<ILeaveTypeService, LeaveTypeService>();
         builder.Services.AddScoped<ILeaveRequestService, LeaveRequestService>();
