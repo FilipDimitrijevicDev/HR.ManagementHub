@@ -6,14 +6,14 @@ namespace Core.Infrastructure.Identity.DbContext;
 
 public class IdentityDbContext : IdentityDbContext<ApplicationUser>
 {
-    public IdentityDbContext(DbContextOptions<IdentityDbContext> options) 
+    public IdentityDbContext(DbContextOptions<IdentityDbContext> options)
         : base(options)
-    {        
+    {
     }
 
-    protected override void OnModelCreating(ModelBuilder builder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        builder.ApplyConfigurationsFromAssembly(typeof(IdentityDbContext).Assembly);
-        base.OnModelCreating(builder);   
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(IdentityDbContext).Assembly);
+        base.OnModelCreating(modelBuilder);
     }
 }

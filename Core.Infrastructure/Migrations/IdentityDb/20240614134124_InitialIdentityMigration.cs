@@ -55,24 +55,6 @@ namespace Core.Infrastructure.Migrations.IdentityDb
                 });
 
             migrationBuilder.CreateTable(
-                name: "LeaveType",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    DefaultDays = table.Column<int>(type: "int", nullable: false),
-                    Uid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_LeaveType", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -193,14 +175,10 @@ namespace Core.Infrastructure.Migrations.IdentityDb
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "2499bc5a-0f33-4f67-b521-5829679ee7ff", 0, "bf74ee7a-659a-4251-a6cd-c4774a1a1a8c", "user@localhost.com", true, "System", "User", false, null, "USER@LOCALHOST.COM", "USER@LOCALHOST.COM", "AQAAAAIAAYagAAAAELz4pquxpBlf/obr/1UMYCu5ChzacIQt8uO6U9jt5JAIQvReDtBT87CS6ipa0adrTg==", null, false, "02ee13bd-74ab-436a-b382-9f256f9f67c1", false, "user@localhost.com" },
-                    { "42df1250-85ef-4683-9046-6f2e5405ee3a", 0, "69f5d9e9-bc1f-4177-9762-b32798911f5e", "admin@localhost.com", true, "System", "Admin", false, null, "ADMIN@LOCALHOST.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAEFXu3gAuw72153nOenHTIZ+mJuCrYOO4tKHFu6YD6kMvNS5bqb0rAuM0W5pYXJackQ==", null, false, "8aa70423-ee85-42fa-bbb5-b8df7a9956a4", false, "admin@localhost.com" }
+                    { "2499bc5a-0f33-4f67-b521-5829679ee7ff", 0, "c4998996-9783-467c-98f8-3a582c72435e", "user@localhost.com", true, "System", "User", false, null, "USER@LOCALHOST.COM", "USER@LOCALHOST.COM", "AQAAAAIAAYagAAAAENAf6dwLNqYJWDnxEKL8iK8T1eFGnrOkYQvWHHefETV4rj+L5kbt5pGdQ98ruiiuOg==", null, false, "3caeed72-54ec-4e9d-b29b-35fca64323bb", false, "user@localhost.com" },
+                    { "306627f3-c902-4d48-a6f3-d83db48df2c6", 0, "d60c9ba6-e177-4fe6-9af7-7b4d244ba3d1", "hr@localhost.com", true, "Hr", "Hr", false, null, "HR@LOCALHOST.COM", "HR@LOCALHOST.COM", "AQAAAAIAAYagAAAAEM0XIAuOxnppQPElTA/ZRlVPYKyBkZ5bKZLvQiRo1UhZ5ONqCDPV5K0yMgiMfm3SNw==", null, false, "2fa54459-ed6f-4c8d-8bb2-21fccbdee93b", false, "hr@localhost.com" },
+                    { "42df1250-85ef-4683-9046-6f2e5405ee3a", 0, "6ca9245c-5967-4d24-a95f-754c51ac95e6", "admin@localhost.com", true, "System", "Admin", false, null, "ADMIN@LOCALHOST.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAEMbvEPD+BhrVM6CYhc0lEHDD/meW7i/gxUb8aFrsg0ZYgLkyPXUoYfy6FyyjoKb/tw==", null, false, "f3a4a6b1-3f70-42b2-81af-723d864aa8f2", false, "admin@localhost.com" }
                 });
-
-            migrationBuilder.InsertData(
-                table: "LeaveType",
-                columns: new[] { "Id", "CreatedDate", "DefaultDays", "DeletedDate", "Name", "Uid", "UpdatedDate" },
-                values: new object[] { 1, new DateTime(2024, 6, 7, 3, 33, 57, 43, DateTimeKind.Local).AddTicks(9302), 20, null, "Vacation", new Guid("00000000-0000-0000-0000-000000000000"), null });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
@@ -208,6 +186,7 @@ namespace Core.Infrastructure.Migrations.IdentityDb
                 values: new object[,]
                 {
                     { "dd70f100-6753-494a-9382-1dd5ef51d4b6", "2499bc5a-0f33-4f67-b521-5829679ee7ff" },
+                    { "2ed7c2e3-d4ad-4222-9439-1700379ea772", "306627f3-c902-4d48-a6f3-d83db48df2c6" },
                     { "995d5439-2b54-458a-b08d-e0f289255a96", "42df1250-85ef-4683-9046-6f2e5405ee3a" }
                 });
 
@@ -268,9 +247,6 @@ namespace Core.Infrastructure.Migrations.IdentityDb
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
-
-            migrationBuilder.DropTable(
-                name: "LeaveType");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

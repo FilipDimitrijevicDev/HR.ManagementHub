@@ -18,9 +18,6 @@ public class DatabaseContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
-
-        //modelBuilder.ApplyConfiguration(new LeaveTypeConfiguration());
-
         base.OnModelCreating(modelBuilder);
     }
 

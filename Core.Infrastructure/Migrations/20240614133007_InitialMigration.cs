@@ -88,7 +88,7 @@ namespace Core.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "LeaveTypes",
                 columns: new[] { "Id", "CreatedDate", "DefaultDays", "DeletedDate", "Name", "Uid", "UpdatedDate" },
-                values: new object[] { 1, new DateTime(2024, 5, 2, 19, 10, 50, 939, DateTimeKind.Local).AddTicks(1583), 20, null, "Vacation", new Guid("b232c075-7718-47d9-9f61-8c1e5780a60c"), new DateTime(2024, 5, 2, 19, 10, 50, 939, DateTimeKind.Local).AddTicks(1638) });
+                values: new object[] { 1, new DateTime(2024, 6, 14, 15, 30, 7, 623, DateTimeKind.Local).AddTicks(9763), 20, null, "Vacation", new Guid("c810b09c-dc40-435e-aed3-0df86003297c"), null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_LeaveDistributions_LeaveTypeId",

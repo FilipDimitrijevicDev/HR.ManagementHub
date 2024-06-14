@@ -18,6 +18,11 @@ public class UserRoleConfiguration : IEntityTypeConfiguration<IdentityUserRole<s
             {
                 RoleId = "dd70f100-6753-494a-9382-1dd5ef51d4b6",
                 UserId = "2499bc5a-0f33-4f67-b521-5829679ee7ff"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "2ed7c2e3-d4ad-4222-9439-1700379ea772",
+                UserId = "306627f3-c902-4d48-a6f3-d83db48df2c6"
             }
         );
     }

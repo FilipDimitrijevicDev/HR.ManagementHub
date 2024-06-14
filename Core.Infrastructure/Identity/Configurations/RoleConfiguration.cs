@@ -26,7 +26,7 @@ public class RoleConfiguration : IEntityTypeConfiguration<IdentityRole>
                 Id = "dd70f100-6753-494a-9382-1dd5ef51d4b6",
                 Name = "Employee",
                 NormalizedName = "EMPLOYEE"
-            }            
+            }
         );
     }
 }

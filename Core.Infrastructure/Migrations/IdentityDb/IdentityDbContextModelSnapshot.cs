@@ -22,49 +22,6 @@ namespace Core.Infrastructure.Migrations.IdentityDb
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Core.Domain.LeaveType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("DefaultDays")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<Guid>("Uid")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("LeaveType");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedDate = new DateTime(2024, 6, 7, 3, 33, 57, 43, DateTimeKind.Local).AddTicks(9302),
-                            DefaultDays = 20,
-                            Name = "Vacation",
-                            Uid = new Guid("00000000-0000-0000-0000-000000000000")
-                        });
-                });
-
             modelBuilder.Entity("Core.Infrastructure.Identity.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -142,7 +99,7 @@ namespace Core.Infrastructure.Migrations.IdentityDb
                         {
                             Id = "42df1250-85ef-4683-9046-6f2e5405ee3a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "69f5d9e9-bc1f-4177-9762-b32798911f5e",
+                            ConcurrencyStamp = "6ca9245c-5967-4d24-a95f-754c51ac95e6",
                             Email = "admin@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -150,9 +107,9 @@ namespace Core.Infrastructure.Migrations.IdentityDb
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFXu3gAuw72153nOenHTIZ+mJuCrYOO4tKHFu6YD6kMvNS5bqb0rAuM0W5pYXJackQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMbvEPD+BhrVM6CYhc0lEHDD/meW7i/gxUb8aFrsg0ZYgLkyPXUoYfy6FyyjoKb/tw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8aa70423-ee85-42fa-bbb5-b8df7a9956a4",
+                            SecurityStamp = "f3a4a6b1-3f70-42b2-81af-723d864aa8f2",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         },
@@ -160,7 +117,7 @@ namespace Core.Infrastructure.Migrations.IdentityDb
                         {
                             Id = "2499bc5a-0f33-4f67-b521-5829679ee7ff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bf74ee7a-659a-4251-a6cd-c4774a1a1a8c",
+                            ConcurrencyStamp = "c4998996-9783-467c-98f8-3a582c72435e",
                             Email = "user@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -168,11 +125,29 @@ namespace Core.Infrastructure.Migrations.IdentityDb
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@LOCALHOST.COM",
                             NormalizedUserName = "USER@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAELz4pquxpBlf/obr/1UMYCu5ChzacIQt8uO6U9jt5JAIQvReDtBT87CS6ipa0adrTg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENAf6dwLNqYJWDnxEKL8iK8T1eFGnrOkYQvWHHefETV4rj+L5kbt5pGdQ98ruiiuOg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "02ee13bd-74ab-436a-b382-9f256f9f67c1",
+                            SecurityStamp = "3caeed72-54ec-4e9d-b29b-35fca64323bb",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com"
+                        },
+                        new
+                        {
+                            Id = "306627f3-c902-4d48-a6f3-d83db48df2c6",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "d60c9ba6-e177-4fe6-9af7-7b4d244ba3d1",
+                            Email = "hr@localhost.com",
+                            EmailConfirmed = true,
+                            FirstName = "Hr",
+                            LastName = "Hr",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "HR@LOCALHOST.COM",
+                            NormalizedUserName = "HR@LOCALHOST.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEM0XIAuOxnppQPElTA/ZRlVPYKyBkZ5bKZLvQiRo1UhZ5ONqCDPV5K0yMgiMfm3SNw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "2fa54459-ed6f-4c8d-8bb2-21fccbdee93b",
+                            TwoFactorEnabled = false,
+                            UserName = "hr@localhost.com"
                         });
                 });
 
@@ -319,6 +294,11 @@ namespace Core.Infrastructure.Migrations.IdentityDb
                         {
                             UserId = "2499bc5a-0f33-4f67-b521-5829679ee7ff",
                             RoleId = "dd70f100-6753-494a-9382-1dd5ef51d4b6"
+                        },
+                        new
+                        {
+                            UserId = "306627f3-c902-4d48-a6f3-d83db48df2c6",
+                            RoleId = "2ed7c2e3-d4ad-4222-9439-1700379ea772"
                         });
                 });
 

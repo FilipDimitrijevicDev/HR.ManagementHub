@@ -23,4 +23,9 @@
     <ProjectReference Include="..\Core.Application\Core.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+    <Folder Include="Migrations\IdentityDb\" />
+  </ItemGroup>
+
 </Project>

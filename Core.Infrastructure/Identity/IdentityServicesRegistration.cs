@@ -20,7 +20,7 @@ public static class IdentityServicesRegistration
         services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 
         services.AddDbContext<IdentityDbContext>(options =>
-           options.UseSqlServer(configuration.GetConnectionString("HrDatabaseConnectionString")));
+           options.UseSqlServer(configuration.GetConnectionString("HRDatabaseAuthConnectionString")));
 
         services.AddIdentity<ApplicationUser, IdentityRole>()
             .AddEntityFrameworkStores<IdentityDbContext>().AddDefaultTokenProviders();

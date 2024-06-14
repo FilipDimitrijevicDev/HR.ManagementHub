@@ -17,7 +17,7 @@ namespace Core.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.4")
+                .HasAnnotation("ProductVersion", "8.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -149,11 +149,10 @@ namespace Core.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 5, 2, 19, 10, 50, 939, DateTimeKind.Local).AddTicks(1583),
+                            CreatedDate = new DateTime(2024, 6, 14, 15, 30, 7, 623, DateTimeKind.Local).AddTicks(9763),
                             DefaultDays = 20,
                             Name = "Vacation",
-                            Uid = new Guid("00000000-0000-0000-0000-000000000000"),
-                            UpdatedDate = new DateTime(2024, 5, 2, 19, 10, 50, 939, DateTimeKind.Local).AddTicks(1638)
+                            Uid = new Guid("c810b09c-dc40-435e-aed3-0df86003297c")
                         });
                 });
 
